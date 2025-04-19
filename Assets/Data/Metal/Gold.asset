@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Gold
   m_EditorClassIdentifier: 
   metalName: "\uAE08"
-  wfc: 19.3
+  weight: 30

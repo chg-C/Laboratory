@@ -15,8 +15,8 @@ namespace CHG.Lab
 		/// <summary>
 		/// 
 		/// </summary>
-		[Tooltip("g / cm3")]
-		public float wfc;
+		[Tooltip("gram")]
+		public int weight;
 		#endregion
 
 		#region Fields
