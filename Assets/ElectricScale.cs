@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class ElectricScale : MonoBehaviour
 {
-    int currentWeihgt;
+    public int currentWeight;
     public TextMeshPro scaleText;
     public List<GameObject> cubes = new List<GameObject>();
     // Start is called before the first frame update
@@ -30,11 +30,11 @@ public class ElectricScale : MonoBehaviour
         if(metal != null)
         {
             int metalWeight = metal.GetWeight();
-            currentWeihgt += metalWeight;
+            currentWeight += metalWeight;
 
             if(scaleText != null)
             {
-                scaleText.text = currentWeihgt.ToString() + "g";
+                scaleText.text = currentWeight.ToString() + "g";
             }
         }
         cubes.Add(other.gameObject);
@@ -47,11 +47,11 @@ public class ElectricScale : MonoBehaviour
         if(metal != null)
         {
             int metalWeight = metal.GetWeight();
-            currentWeihgt -= metalWeight;
+            currentWeight -= metalWeight;
 
             if(scaleText != null)
             {
-                scaleText.text = currentWeihgt.ToString() + "g";
+                scaleText.text = currentWeight.ToString() + "g";
             }
         }
         cubes.Remove(cubes.Find(x => x.GetInstanceID() == other.GetInstanceID()));
@@ -64,7 +64,7 @@ public class ElectricScale : MonoBehaviour
             Destroy(cube);
         }
         cubes.Clear();
-        currentWeihgt = 0;
+        currentWeight = 0;
         scaleText.text = "0g";
     }
 }

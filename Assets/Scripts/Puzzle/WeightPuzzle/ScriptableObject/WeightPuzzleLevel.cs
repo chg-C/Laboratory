@@ -12,11 +12,11 @@ namespace CHG.Lab
 	{
 		#region Inspector Fields
 
-		[Tooltip("이 레벨의 목표 무게")]
+		[SerializeField, Tooltip("이 레벨의 목표 무게")]
         private int targetWeight;
 
-        [Tooltip("이 레벨에서 사용할 수 있는 금속 종류")]
-        private List<MetalData> usableMetals = new List<MetalData>();
+        [SerializeField, Tooltip("이 레벨에서 사용할 수 있는 금속 종류")]
+        private MetalData[] usableMetals;
 		#endregion
 
 		#region Fields
@@ -29,7 +29,7 @@ namespace CHG.Lab
 			set => targetWeight = value;
 		}
 
-		public List<MetalData> UsableMetals
+		public MetalData[] UsableMetals
 		{
 			get => usableMetals;
 			set => usableMetals = value;

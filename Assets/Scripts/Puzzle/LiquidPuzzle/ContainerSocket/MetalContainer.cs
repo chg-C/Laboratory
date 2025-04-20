@@ -21,6 +21,9 @@ namespace CHG.Lab
 		[SerializeField, Tooltip("금속 Prefab")]
 		private Metal _metalPrefab;
 
+		[SerializeField, Tooltip("금속 Prefab의 무게")]
+		private int _weight;
+
 		[SerializeField, Tooltip("금속의 재생성 주기")]
 		private float _metalRespawnTimer = 1f;
 		
@@ -42,6 +45,13 @@ namespace CHG.Lab
 				return _transform;
 			}
 		}
+
+		public int Weight
+		{
+			get => _weight;
+			set => _weight = value;
+		}
+
 		/// <summary>
 		/// 연결된 Socket
 		/// </summary>
@@ -78,6 +88,7 @@ namespace CHG.Lab
 		protected virtual void Awake()
 		{
 			CacheComponents();
+			Weight = MetalPrefab.GetWeight();
 		}
 
         void OnEnable()
@@ -100,7 +111,7 @@ namespace CHG.Lab
 				{
 					MetalRespawnTimer = 1f;
 
-					SpawnReagent();
+					SpawnMetal();
 				}
 			}
 			else
@@ -124,7 +135,7 @@ namespace CHG.Lab
 		/// <summary>
 		/// 시약 생성하기
 		/// </summary>
-		private void SpawnReagent()
+		private void SpawnMetal()
         {
             Metal metal = Instantiate(MetalPrefab, Socket.attachTransform.position, Socket.attachTransform.rotation);
 

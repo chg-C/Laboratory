@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3982d3a45c7d334428a052b6618d5cfa, type: 3}
   m_Name: Wood
   m_EditorClassIdentifier: 
-  metalName: "\uB098\uBB34"
+  metalName: Wood
   weight: 1
