@@ -1,70 +1,55 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class HoverSelectableUI : XRBaseInteractable
 {
-    public Material highlightMaterial; // Hover ½Ã »ç¿ëÇÒ ¸ÓÆ¼¸®¾ó
-    private Material originalMaterial; // ¿ø·¡ ¸ÓÆ¼¸®¾ó ÀúÀå¿ë
-    private Renderer objectRenderer;   // ¸ÓÆ¼¸®¾ó ¹Ù²ãÁÙ ·»´õ·¯
+    private Color originalColor;
+    public Renderer objectRenderer;
 
-    public GameObject popupUI; // Å¬¸¯ ½Ã È°¼ºÈ­/ºñÈ°¼ºÈ­ µÉ UI
+    public GameObject popupUI; // Quadë¡œ ë§Œë“  UI ì˜¤ë¸Œì íŠ¸
 
-    private bool isUIActive = false; // ÇöÀç UI°¡ ÄÑÁ® ÀÖ´ÂÁö »óÅÂ È®ÀÎ
-
-    protected override void Awake()
+    private void Start()
     {
-        base.Awake();
-
-        // ¿ÀºêÁ§Æ®¿¡ ÀÖ´Â Renderer °¡Á®¿À±â (¸ÓÆ¼¸®¾ó º¯°æ¿ë)
         objectRenderer = GetComponent<Renderer>();
 
         if (objectRenderer != null)
         {
-            // ½ÃÀÛ ½Ã ¿ø·¡ ¸ÓÆ¼¸®¾ó ÀúÀå
-            originalMaterial = objectRenderer.material;
+            originalColor = objectRenderer.material.color;
         }
 
-        // ½ÃÀÛ ½Ã UI ²¨Á® ÀÖ°Ô ¼³Á¤
         if (popupUI != null)
         {
-            popupUI.SetActive(false);
+            popupUI.SetActive(false); // ì‹œì‘ ì‹œ UI êº¼ë‘ê¸°
         }
     }
 
-    // Hover ½ÃÀÛ: ¸ÓÆ¼¸®¾ó »ö ¹Ù²Ù±â
+    // í˜¸ë²„ ì‹œì‘ ì‹œ UI ì¼œê¸°
     protected override void OnHoverEntered(HoverEnterEventArgs args)
     {
         base.OnHoverEntered(args);
-
-        if (objectRenderer != null && highlightMaterial != null)
+        if (objectRenderer != null)
         {
-            objectRenderer.material = highlightMaterial;
+            objectRenderer.material.color = new Color(0.3f, 0.7f, 1.0f); // í•˜ëŠ˜ìƒ‰
+        }
+
+        if (popupUI != null)
+        {
+            popupUI.SetActive(true); // UI ì¼œê¸°
         }
     }
 
-    // Hover ³¡: ¸ÓÆ¼¸®¾ó ¿ø·¡´ë·Î º¹±¸
+    // í˜¸ë²„ ëë‚˜ë©´ UI ë„ê¸°
     protected override void OnHoverExited(HoverExitEventArgs args)
     {
         base.OnHoverExited(args);
-
-        if (objectRenderer != null && originalMaterial != null)
+        if (objectRenderer != null)
         {
-            objectRenderer.material = originalMaterial;
+            objectRenderer.material.color = originalColor;
         }
-    }
 
-    // ¹öÆ° ´©¸§ (¿¹: Æ®¸®°Å Å¬¸¯ µî) ¡æ UI Åä±Û
-    protected override void OnSelectEntered(SelectEnterEventArgs args)
-    {
-        base.OnSelectEntered(args);
-
-        // UI°¡ ¿¬°áµÇ¾î ÀÖÀ» ¶§¸¸ ½ÇÇà
         if (popupUI != null)
         {
-            isUIActive = !isUIActive; // ÇöÀç »óÅÂ ¹İÀü
-            popupUI.SetActive(isUIActive); // UI ÄÑ±â/²ô±â
+            popupUI.SetActive(false); // UI ë„ê¸°
         }
     }
 }

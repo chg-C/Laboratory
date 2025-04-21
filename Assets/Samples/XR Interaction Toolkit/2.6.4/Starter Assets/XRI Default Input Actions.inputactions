@@ -687,7 +687,7 @@
                     "name": "Select",
                     "type": "Button",
                     "id": "33754c03-48ec-46ef-9bc6-22ed6bfdd8e8",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -705,25 +705,7 @@
                     "name": "Activate",
                     "type": "Button",
                     "id": "0c0991c5-d329-4afc-8892-1076b440477c",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Primary",
-                    "type": "Button",
-                    "id": "a5ac39ac-c860-4230-a3fa-4f072b632918",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Secondary",
-                    "type": "Button",
-                    "id": "a7d69a87-679c-45b9-ae00-158c409b55e2",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -854,28 +836,6 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Activate",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4cbb3990-4fe9-48d7-af64-5c47b9d63c3d",
-                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "Primary",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3994a88a-6b9b-48e5-ba13-435fa48fd11f",
-                    "path": "<XRController>{LeftHand}/{SecondaryButton}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "Secondary",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1185,7 +1145,7 @@
                     "name": "Is Tracked",
                     "type": "Button",
                     "id": "a705ffe4-b2c8-4b78-847f-25257d4e30af",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -1279,24 +1239,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "RotatePositive",
-                    "type": "Button",
-                    "id": "20ef614b-8e01-40c7-abb6-67c61ea2188c",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "RotateNegative",
-                    "type": "Button",
-                    "id": "f96b764c-edb6-439a-9880-24016da75b09",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1530,28 +1472,6 @@
                     "action": "Grip Rotation",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7df521f5-f13b-40fc-8064-dba04d105199",
-                    "path": "<XRInputV1::Oculus::OculusTouchControllerLeft>{RightHand}/primarybutton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Generic XR Controller",
-                    "action": "RotatePositive",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fdcd6308-84e1-4c74-9e8a-823d50e21a69",
-                    "path": "<XRInputV1::Oculus::OculusTouchControllerLeft>{RightHand}/secondarybutton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Generic XR Controller",
-                    "action": "RotateNegative",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },
@@ -1563,7 +1483,7 @@
                     "name": "Select",
                     "type": "Button",
                     "id": "ac96c10b-c955-4a46-8e67-bf16bc069b53",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -1594,24 +1514,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Primary",
-                    "type": "Button",
-                    "id": "a92c3c26-751e-4da0-b1b2-e0e70e1c36fc",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Secondary",
-                    "type": "Button",
-                    "id": "1ac5d377-3548-49c3-8e1d-1b2d76476f1a",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 },
                 {
                     "name": "UI Press",
@@ -1662,7 +1564,7 @@
                     "name": "Scale Toggle",
                     "type": "Button",
                     "id": "5ad73d15-99a4-4bce-a76f-f49815602416",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -1840,28 +1742,6 @@
                     "processors": "ScaleVector2(x=0),StickDeadzone",
                     "groups": "Generic XR Controller",
                     "action": "Scale Delta",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a3e629db-22ec-4ab5-b262-cb061ef81037",
-                    "path": "<XRController>{RightHand}/{PrimaryButton}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Generic XR Controller",
-                    "action": "Primary",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8e8283ef-d71e-4d80-b26c-916a2ad83385",
-                    "path": "<XRController>{RightHand}/{SecondaryButton}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Generic XR Controller",
-                    "action": "Secondary",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
