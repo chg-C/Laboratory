@@ -13,6 +13,8 @@ namespace CHG.Lab
 {
 	public class LiquidPuzzleGame : MonoBehaviour, ILevelingPuzzle
 	{
+		string kGameID = "색상 혼합";
+
 		#region Inspector Fields
 		[Header("Correction")]
 		[SerializeField, Tooltip("현재 정답 색상")]
@@ -41,6 +43,8 @@ namespace CHG.Lab
 		private UnityEvent _onStart;
 		[SerializeField, Tooltip("Clear 이벤트")]
 		private UnityEvent _onClear;
+		[SerializeField, Tooltip("레벨 시작")]
+		private UnityEvent _onLevelStart;
 		[SerializeField, Tooltip("마지막 레벨 Clear 이벤트")]
 		private UnityEvent _onClearLastLevel;
 		
@@ -131,10 +135,12 @@ namespace CHG.Lab
         public UnityEvent OnStart => _onStart;
 
         public UnityEvent OnClear => _onClear;
+
+        public UnityEvent OnLevelStart => _onLevelStart;
         #endregion
 
         #region Methods
-		public void SetCorrectionColor(Color color)
+        public void SetCorrectionColor(Color color)
 		{
 			CorrectionColor = color;
 			CorrectionPresentor.sharedMaterial.color = color;
@@ -161,32 +167,27 @@ namespace CHG.Lab
 			isPlaying = true;
 
 			GlobalEventManager.Instance.Publish("ResetLevel");
+
+			OnLevelStart?.Invoke();
         }
-		public static float CalculateRGBSimilaritySimple(Color colorA, Color colorB)
+		public static float CalculateRGBSimilaritySimple(Color color1, Color color2)
 		{
-			// 각 RGB 채널의 절대 차이를 계산합니다. (각 값은 0.0 ~ 1.0 범위)
-			float diffR = Mathf.Abs(colorA.r - colorB.r);
-			float diffG = Mathf.Abs(colorA.g - colorB.g);
-			float diffB = Mathf.Abs(colorA.b - colorB.b);
+			 // Use Vector3 for distance calculation in RGB space
+			Vector3 rgb1 = new Vector3(color1.r, color1.g, color1.b);
+			Vector3 rgb2 = new Vector3(color2.r, color2.g, color2.b);
 
-			// 총 차이값 계산 (범위: 0.0 ~ 3.0)
-			float totalDifference = diffR + diffG + diffB;
+			float distance = Vector3.Distance(rgb1, rgb2);
 
-			// 총 차이를 0.0 ~ 1.0 범위로 정규화합니다. (최대 차이는 3.0)
-			float normalizedDifference = totalDifference / 3.0f;
-
-			// 유사도는 1.0 에서 정규화된 차이를 뺀 값입니다.
-			float similarity = 1.0f - normalizedDifference;
-
-			return similarity;
+			return 1 - distance;
 		}
         #endregion
 
         #region MonoBehaviour Methods
         void Start()
         {
-            SetLevel(CurrentLevel);
 			OnStart?.Invoke();
+			GlobalEventManager.Instance.Publish("ClearScore", new ClearScoreArgs(kGameID));
+            SetLevel(CurrentLevel);
         }
         void FixedUpdate()
         {
@@ -197,11 +198,7 @@ namespace CHG.Lab
 				if(matched >= CurrentLevelData.MatchRequired && 
 					beaker.CurrentAmount >= CurrentLevelData.MinAmount)
 				{
-					OnClear?.Invoke();
-					MatchPercents.text = "CLEAR!";
-					isPlaying = false;
-
-					Invoke("NextLevel", 2.5f);
+					ClearLevel(matched);
 				}
 				else
 				{
@@ -214,8 +211,22 @@ namespace CHG.Lab
 
 			}
         }
-		//TEMP
-		void NextLevel()
+
+        private void ClearLevel(float matched)
+        {
+			OnClear?.Invoke();
+			MatchPercents.text = "CLEAR!";
+			isPlaying = false;
+
+			float score = CurrentLevelData.ClearScore + (CurrentLevelData.SimilarityScore * matched);
+			GlobalEventManager.Instance.Publish("EarnScore", new EarnScoreArgs(kGameID, score));
+
+
+			Invoke("NextLevel", 2.5f);
+        }
+
+        //TEMP
+        void NextLevel()
 		{
 			++_currentLevel;
 			if(CurrentLevel >= LevelData.Length)

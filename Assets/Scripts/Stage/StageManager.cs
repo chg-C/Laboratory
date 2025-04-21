@@ -2,6 +2,7 @@
 ///스크립트 담당자 - 최현규
 ///스크립트 생성 버전 - 0.1
 
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,7 @@ namespace CHG.Lab
 	public class StageManager : MonoBehaviour
 	{
 		#region Inspector Fields
+		//
 		[SerializeField, Tooltip("스테이지 시작 이벤트")]
 		private UnityEvent _onStageStart;
 		[SerializeField, Tooltip("스테이지 클리어 이벤트")]
@@ -31,6 +33,8 @@ namespace CHG.Lab
 		   get => _onStageClear;
 		   set => _onStageClear = value;
 		}
+
+		float backup = 0;
 
         #endregion
 

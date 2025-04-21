@@ -132,15 +132,27 @@ namespace CHG.Lab
 		}
         public void Fill(Color color, float power)
         {
-			Debug.Log("Filling");
-
 			if(CurrentVolume < MaxVolume)
 			{
 				if(CurrentVolume > 0.0001f)
 				{
-					float existingAmount = CurrentVolume - power;
-					float lerpFactor = power / CurrentVolume;
-					CurrentColor = Color.Lerp(CurrentColor, color, lerpFactor);
+					Color colorBeforeMix = CurrentColor;
+					float volumeBeforeMix = CurrentVolume;
+
+					float total = Mathf.Min(volumeBeforeMix + power, MaxVolume);
+					float actualVolume = total - volumeBeforeMix;
+
+					if(actualVolume <= 0 || total <= 0.001f)
+						return;
+
+					
+					// // 가중 평균 계산 (벡터 연산 활용)
+					Vector4 colorVecBefore = (Vector4)colorBeforeMix * volumeBeforeMix;
+					Vector4 colorVecNew = (Vector4)color * actualVolume; // 실제 들어간 양 기준
+
+					Vector4 mixedColorVec = (colorVecBefore + colorVecNew) / total;
+
+					CurrentColor = (Color)mixedColorVec;
 				}
 				else
 				{

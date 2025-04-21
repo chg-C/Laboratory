@@ -241,7 +241,7 @@ namespace CHG.Lab
 			{
 				float maxExcessTilt = 180.0f; // 예시: 최대로 더 기울일 수 있는 각도 (조절 필요)
 				float minMultiplier = 0.5f;  // 최소 배율
-				float maxMultiplier = 7.0f;  // 최대 배율
+				float maxMultiplier = 20.0f;  // 최대 배율
 
 				float excessTilt = tiltedAngle - PouringAngle;
 				

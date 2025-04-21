@@ -10,6 +10,35 @@ namespace CHG.Lab
 	public class LiquidPuzzleLevel : ScriptableObject
 	{
 		#region Inspector Fields
+		[SerializeField, Tooltip("이 레벨의 이름")]
+		private string _levelName;
+		[SerializeField, Tooltip("이 레벨의 설명 혹은 힌트"), TextArea]
+		private string _description;
+
+		[SerializeField, Tooltip("클리어시 얻는 기본 점수")]
+		private int _clearScore;
+		[SerializeField, Tooltip("일치율에 따라 얻는 점수(100% 기준)")]
+		private float _similarityScore;
+		
+		/// <summary>
+		/// 일치율에 따라 얻는 점수(100% 기준)
+		/// </summary>
+		public float SimilarityScore
+		{
+		   get => _similarityScore;
+		   set => _similarityScore = value;
+		}
+		
+		/// <summary>
+		/// 클리어시 얻는 기본 점수
+		/// </summary>
+		public int ClearScore
+		{
+		   get => _clearScore;
+		   set => _clearScore = value;
+		}
+		
+
 		[SerializeField, Tooltip("정답 색상(랜덤 선택)")]
 		private Color[] _correctionColors;
 		[SerializeField, Tooltip("사용 가능한 색상 목록(10개까지)")]
@@ -59,6 +88,24 @@ namespace CHG.Lab
 		   get => _matchRequired;
 		   set => _matchRequired = value;
 		}
+		
+		/// <summary>
+		/// 이 레벨의 이름
+		/// </summary>
+		public string LevelName
+		{
+		   get => _levelName;
+		   set => _levelName = value;
+		}
+		/// <summary>
+		/// 이 레벨의 설명 혹은 힌트
+		/// </summary>
+		public string Description
+		{
+		   get => _description;
+		   set => _description = value;
+		}
+		
 		#endregion
 
 		#region Methods

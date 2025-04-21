@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd3399f2e6683342998cfbe005cd998, type: 3}
+  m_Name: WeightLevel3
+  m_EditorClassIdentifier: 
+  targetWeight: 79
+  usableMetals:
+  - {fileID: 11400000, guid: 3d9bec0588e57554f895f1020ec44526, type: 2}
+  - {fileID: 11400000, guid: b1e53c7c4e316374db881e5a581df556, type: 2}
+  - {fileID: 11400000, guid: d1d25f44814aef845bf2a00a77932418, type: 2}
+  - {fileID: 11400000, guid: 36e089d6844f4aa4fb0a47c575c9635a, type: 2}
+  - {fileID: 11400000, guid: 23d43c25d075d744bb9a67b2af525e83, type: 2}
+  - {fileID: 11400000, guid: d0dc9c3a2260d674db881d336d7cbcb4, type: 2}

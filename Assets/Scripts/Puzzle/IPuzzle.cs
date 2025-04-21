@@ -24,7 +24,7 @@ namespace CHG.Lab
 		public int CurrentLevel {get;}
 		public int MaxLevel {get;}
 
-
+		public UnityEvent OnLevelStart {get;}
 		public UnityEvent OnClearLastLevel {get;}
 	}
 }
